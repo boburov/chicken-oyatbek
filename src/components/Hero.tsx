@@ -53,7 +53,7 @@ export function Hero() {
             variants={fadeUp}
             className="block text-[clamp(0.8125rem,1.55vw,1.25rem)] leading-relaxed font-bold tracking-[0.08em] text-balance text-navy"
           >
-            “{PARTNER_NAME}” kompaniyasi bilan hamkorlikda
+            “{PARTNER_NAME}” kompaniyasi bilan Kegeyli Baraka Naslli Parranda H.K qo‘shma korxona
           </motion.span>
 
           <span className="mt-3 block text-[clamp(2.5rem,6.2vw,5rem)] leading-[1.02] font-extrabold tracking-[-0.035em] lg:mt-4">

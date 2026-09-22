@@ -1,14 +1,12 @@
 import { motion } from "framer-motion";
 import { Bird, ChartNoAxesCombined, DollarSign, MapPinned, Warehouse, type LucideIcon } from "lucide-react";
 import { AnimatedCounter } from "../components/ui/AnimatedCounter";
-import { JointFlow } from "../components/ui/JointFlow";
 import { ImageCard } from "../components/ui/ImageCard";
 import { Reveal, RevealGroup } from "../components/ui/Reveal";
 import {
   COMPANY_SHORT,
   LOCATION,
   PARENT_STOCK,
-  PARTNER_NAME,
   POULTRY_HOUSES,
   PROJECT_VALUE,
 } from "../data/content";
@@ -16,7 +14,7 @@ import { GALLERY } from "../data/gallery";
 import { fadeUp } from "../lib/motion";
 
 /** Seconds after load at which each column starts, so the panel fills left to right after the title. */
-const START = { panel: 0.7, stats: 0.95, partner: 1.15, gallery: 1.35 } as const;
+const START = { panel: 0.7, stats: 0.95, gallery: 1.2 } as const;
 
 type StatProps = {
   icon: LucideIcon;
@@ -60,25 +58,7 @@ function Stat({ icon: Icon, badge: Badge, overline, label, value, suffix, unit }
   );
 }
 
-/** Centre column: who the partner is, then how the joint venture is owned (arrows into the JV). */
-function Partner() {
-  return (
-    <RevealGroup eager interval={0.14} timing={{ notBefore: START.partner }} className="flex h-full min-h-0 flex-col gap-3">
-      <motion.article variants={fadeUp} className="glass rounded-[1.25rem] px-5 py-3 text-center">
-        <h2 className="text-[0.8125rem] font-extrabold tracking-[0.14em] text-accent uppercase">Loyiha hamkori</h2>
-        <p className="mt-1.5 text-[0.8125rem] leading-snug font-semibold text-balance text-ink">
-          “{PARTNER_NAME}” <span className="font-bold text-muted">kompaniyasi</span>
-        </p>
-      </motion.article>
-
-      <div className="flex min-h-0 flex-1 flex-col justify-center">
-        <JointFlow />
-      </div>
-    </RevealGroup>
-  );
-}
-
-/** The dashed project panel: key figures · partner and joint venture · photographs. */
+/** The project panel: key figures · photographs. */
 export function PosterOverview() {
   return (
     <Reveal
@@ -88,13 +68,13 @@ export function PosterOverview() {
     >
       <section
         aria-label="Loyiha haqida asosiy ma’lumotlar"
-        className="grid h-full min-h-0 grid-cols-[minmax(0,1fr)_minmax(0,1.06fr)_minmax(0,1.56fr)]"
+        className="grid h-full min-h-0 grid-cols-[minmax(0,1fr)_minmax(0,2.2fr)]"
       >
         <RevealGroup
           eager
           interval={0.14}
           timing={{ notBefore: START.stats }}
-          className="grid min-h-0 grid-rows-3 gap-3 pr-5"
+          className="grid min-h-0 grid-rows-3 gap-3 border-r border-navy/10 pr-5"
         >
           <Stat
             icon={ChartNoAxesCombined}
@@ -115,15 +95,11 @@ export function PosterOverview() {
           <Stat
             icon={Bird}
             overline={COMPANY_SHORT}
-            label="Ota-ona podasi"
+            label="OTA-ONA AVLODI"
             value={PARENT_STOCK.value}
             unit={PARENT_STOCK.unit}
           />
         </RevealGroup>
-
-        <div className="min-h-0 border-x border-navy/10 px-5">
-          <Partner />
-        </div>
 
         <RevealGroup
           eager
@@ -136,7 +112,7 @@ export function PosterOverview() {
               key={image.label}
               {...image}
               index={index}
-              sizes="(min-width: 1200px) 22vw, 46vw"
+              sizes="(min-width: 1200px) 32vw, 46vw"
               priority
               className="min-h-0 rounded-[1.75rem_0.5rem] ring-1 ring-white"
             />

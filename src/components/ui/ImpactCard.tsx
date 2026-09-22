@@ -22,11 +22,11 @@ export function ImpactCard({ Icon, label, note, before, after, poster = false, s
       aria-label={`${label}${note ? `, ${note}` : ""}: hozir ${before.value} ${before.unit}, loyihadan keyin ${afterText} ${after.unit}`}
       className={cn(
         "glass flex min-w-0 flex-col rounded-[1.25rem] transition-shadow duration-500 hover:shadow-glow",
-        poster ? "gap-2 px-3.5 py-3" : "gap-4 p-5",
+        poster ? "gap-1.5 px-3 py-2" : "gap-4 p-5",
       )}
     >
       <div className="flex items-center gap-2.5">
-        <span className={cn("bg-grad flex shrink-0 items-center justify-center rounded-xl text-white", poster ? "size-8" : "size-10")}>
+        <span className={cn("bg-grad flex shrink-0 items-center justify-center rounded-xl text-white", poster ? "size-7" : "size-10")}>
           <Icon aria-hidden className={poster ? "size-4" : "size-5"} strokeWidth={1.8} />
         </span>
         <h3 className="min-w-0 leading-tight">
@@ -64,7 +64,7 @@ export function ImpactCard({ Icon, label, note, before, after, poster = false, s
               decimalSeparator=","
               startAfter={startAfter}
               gradient
-              className={cn("tracking-[-0.04em]", poster ? "text-[2rem]" : "text-4xl")}
+              className={cn("tracking-[-0.04em]", poster ? "text-[1.75rem]" : "text-4xl")}
             />
             <span className={cn("font-semibold tracking-normal text-accent", poster ? "text-[0.6875rem]" : "text-sm")}>{after.unit}</span>
           </span>

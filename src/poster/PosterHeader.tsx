@@ -1,5 +1,8 @@
 import { Fragment } from "react";
 import { motion, type Variants } from "framer-motion";
+import { Handshake } from "lucide-react";
+import cnFlag from "../assets/flags/cn.svg";
+import uzFlag from "../assets/flags/uz.svg";
 import { DotPattern } from "../components/ui/DotPattern";
 import { BREED, PARTNER_NAME } from "../data/content";
 import { EASE_OUT, fadeUp, stagger } from "../lib/motion";
@@ -18,19 +21,45 @@ const ornament: Variants = {
 
 const intro = stagger(0.11, 0.15);
 
-/** Slide title flanked by the dotted ornaments, as on the original. */
+/** One side of the alliance: flag and company name. */
+function Party({ flag, flagAlt, name }: { flag: string; flagAlt: string; name: string }) {
+  return (
+    <span className="glass flex items-center gap-2.5 rounded-2xl py-1.5 pr-4 pl-2">
+      <img
+        src={flag}
+        alt={flagAlt}
+        width={48}
+        height={36}
+        decoding="async"
+        className="h-7 w-[2.3125rem] shrink-0 rounded-md object-cover shadow-sm ring-1 ring-navy/10"
+      />
+      <span className="text-[1.125rem] leading-tight font-extrabold tracking-[0.01em] whitespace-nowrap text-navy">{name}</span>
+    </span>
+  );
+}
+
+/**
+ * The header leads with the alliance itself — the Uzbek company and the Chinese partner,
+ * each with its flag — and names the breed and the project underneath, smaller.
+ */
 export function PosterHeader() {
   return (
     <motion.header variants={intro} initial="hidden" animate="show" className="relative text-center">
-      <h1 className="mx-auto max-w-[70rem] uppercase">
-        <motion.span
-          variants={fadeUp}
-          className="block text-[1.0625rem] leading-normal font-bold tracking-[0.08em] text-accent"
-        >
-          “{PARTNER_NAME}” kompaniyasi bilan hamkorlikda
+      <h1 className="mx-auto max-w-[80rem]">
+        <motion.span variants={fadeUp} className="block text-[0.9375rem] font-extrabold tracking-[0.2em] text-accent uppercase">
+          Qo‘shma korxona
         </motion.span>
 
-        <span className="mt-0.5 block text-[3.375rem] leading-[1.04] font-extrabold tracking-[-0.035em]">
+        <motion.span variants={fadeUp} className="mt-1.5 flex items-center justify-center gap-3 uppercase">
+          <Party flag={uzFlag} flagAlt="O‘zbekiston bayrog‘i" name="“Kegeyli Baraka Naslli Parranda” H.K" />
+          <span aria-hidden className="bg-grad flex size-8 shrink-0 items-center justify-center rounded-full text-white shadow-glow">
+            <Handshake className="size-4" strokeWidth={2} />
+          </span>
+          <span className="sr-only"> va </span>
+          <Party flag={cnFlag} flagAlt="Xitoy bayrog‘i" name={`“${PARTNER_NAME}”`} />
+        </motion.span>
+
+        <span className="mt-2.5 block text-[2.125rem] leading-[1.05] font-extrabold tracking-[-0.03em] uppercase">
           {HEADLINE.map((text, i) => (
             <Fragment key={text}>
               <span className="inline-block overflow-hidden pb-[0.06em] align-bottom">
@@ -45,16 +74,16 @@ export function PosterHeader() {
 
         <motion.span
           variants={fadeUp}
-          className="mt-0.5 block text-[1.375rem] leading-snug font-extrabold tracking-[0.01em] text-navy"
+          className="block text-[0.9375rem] leading-snug font-bold tracking-[0.06em] text-navy/80 uppercase"
         >
           To‘liq naslchilik zanjirini mahalliylashtirish loyihasi
         </motion.span>
       </h1>
 
-      <motion.div variants={ornament} aria-hidden className="absolute top-1/2 left-0 -translate-y-1/2">
+      <motion.div variants={ornament} aria-hidden className="absolute top-[72%] left-0 -translate-y-1/2">
         <DotPattern className="animate-float" />
       </motion.div>
-      <motion.div variants={ornament} aria-hidden className="absolute top-1/2 right-0 -translate-y-1/2">
+      <motion.div variants={ornament} aria-hidden className="absolute top-[72%] right-0 -translate-y-1/2">
         <DotPattern className="animate-float [animation-delay:-5s]" />
       </motion.div>
     </motion.header>

@@ -1,6 +1,6 @@
 import { Fragment } from "react";
 import { motion } from "framer-motion";
-import { Bird, Egg, Feather, Gauge, Globe, HandCoins, Scale, Warehouse, type LucideIcon } from "lucide-react";
+import { Bird, Egg, Feather, HandCoins, Scale, Warehouse, type LucideIcon } from "lucide-react";
 import { BENEFIT, BREED } from "../../data/content";
 import { fadeUp } from "../../lib/motion";
 import { cn } from "../../lib/cn";
@@ -21,18 +21,6 @@ const ITEMS: (Step | Compare | Sale)[] = [
     value: `${BENEFIT.output.value} ${BENEFIT.output.unit}`,
     caption: "broyler inkubatsion tuxum · yiliga",
     Icon: Egg,
-  },
-  {
-    kind: "step",
-    value: `${BENEFIT.chicks.value} ${BENEFIT.chicks.unit}`,
-    caption: "broyler jo‘ja ishlab chiqarish quvvati · yiliga",
-    Icon: Gauge,
-  },
-  {
-    kind: "step",
-    value: `${BENEFIT.export.value} ${BENEFIT.export.unit}`,
-    caption: "bir kunlik broyler jo‘ja eksporti · yiliga",
-    Icon: Globe,
     final: true,
   },
 ];
@@ -47,7 +35,7 @@ function PriceRow({ label, price, local, poster }: { label: string; price: numbe
   return (
     <span aria-hidden className="flex flex-col gap-0.5">
       <span className={cn("flex flex-wrap items-baseline justify-between gap-x-2 font-bold", poster ? "text-[0.6875rem]" : "text-sm")}>
-        <span className={cn("whitespace-nowrap", local ? "text-navy" : "text-muted")}>{label}:</span>
+        <span className={local ? "text-navy" : "text-muted"}>{label}:</span>
         <span className="ml-auto whitespace-nowrap">
           <span className="font-semibold text-muted">
             {headsMln} mln × {price} $ ={" "}
@@ -92,13 +80,13 @@ function CompareCard({ poster }: { poster: boolean }) {
     <motion.li
       variants={fadeUp}
       aria-label={`Taqqoslash. Yevropadan olib kelinganda: ${headsMln} mln bosh × ${europePricePerHead} $ = ${europe} ${unit}. Tejamkorlik: ${europe} ${unit},`}
-      className={cn("glass relative flex min-w-0 flex-[1.45] flex-col rounded-[1.125rem]", poster ? "gap-1.5 px-3 py-2.5" : "gap-2 p-4 sm:p-5")}
+      className={cn("glass relative flex min-w-0 flex-[1.35] flex-col rounded-[1.125rem]", poster ? "gap-1 px-2.5 py-2" : "gap-2 p-4 sm:p-5")}
     >
       <CardHeader Icon={Scale} title="Taqqoslash" poster={poster} />
       <PriceRow label="Yevropadan olib kelinganda" price={europePricePerHead} local={false} poster={poster} />
       <span aria-hidden className={cn("mt-auto flex flex-col", poster ? "text-[0.6875rem]" : "text-sm")}>
         <span className="flex items-baseline justify-between gap-2 font-bold text-navy">
-          Tejamkorlik
+          Import O`rnini Bosish`
           <span className="font-extrabold whitespace-nowrap text-accent">
             {europe} {unit}
           </span>
@@ -117,8 +105,8 @@ function SaleCard({ poster }: { poster: boolean }) {
       variants={fadeUp}
       aria-label={`Sotuv. Mahalliy korxonadan olinganda: ${headsMln} mln bosh × ${pricePerHead} $ = ${saleTotal(pricePerHead)} ${unit}.`}
       className={cn(
-        "relative flex min-w-0 flex-[1.45] flex-col rounded-[1.125rem] border border-dashed border-accent/45 bg-accent/[0.06]",
-        poster ? "gap-1.5 px-3 py-2.5" : "gap-2 p-4 sm:p-5",
+        "relative flex min-w-0 flex-[1.35] flex-col rounded-[1.125rem] border border-dashed border-accent/45 bg-accent/[0.06]",
+        poster ? "gap-1 px-2.5 py-2" : "gap-2 p-4 sm:p-5",
       )}
     >
       <CardHeader Icon={HandCoins} title="Sotuv" poster={poster} />
@@ -129,8 +117,8 @@ function SaleCard({ poster }: { poster: boolean }) {
 
 /**
  * The breeding chain as a step diagram: grandparent birds → parent generation → Europe vs local
- * price → sale of the parent birds → flock kept on site → yearly hatching eggs → yearly chick capacity →
- * yearly day-old chick exports. `poster` is the compact one-screen size.
+ * price → sale of the parent birds → flock kept on site → yearly hatching eggs.
+ * (Chick capacity and exports are shown with the results.) `poster` is the compact one-screen size.
  */
 export function BreedingFlow({ poster = false }: { poster?: boolean }) {
   let stepNumber = 0;
@@ -168,7 +156,7 @@ function StepCard({ step, n, poster }: { step: Step; n: number; poster: boolean 
       variants={fadeUp}
       className={cn(
         "relative flex min-w-0 flex-1 flex-col rounded-[1.125rem]",
-        poster ? "gap-1.5 px-3 py-2.5" : "gap-2 p-4 sm:p-5",
+        poster ? "gap-1 px-2.5 py-2" : "gap-2 p-4 sm:p-5",
         step.final ? "bg-grad text-white shadow-glow" : "glass",
       )}
     >
@@ -195,7 +183,7 @@ function StepCard({ step, n, poster }: { step: Step; n: number; poster: boolean 
       <span
         className={cn(
           "leading-tight font-extrabold tracking-tight",
-          poster ? "text-[1.0625rem]" : "text-xl lg:text-2xl",
+          poster ? "text-[0.9375rem]" : "text-xl lg:text-2xl",
           step.final ? "text-white" : "text-grad",
         )}
       >

@@ -14,7 +14,7 @@ export function PosterBenefits() {
       interval={0.12}
       timing={{ notBefore: START }}
       aria-label="Loyiha afzalligi"
-      className="glass flex flex-col gap-2.5 rounded-[1.5rem] px-6 py-3.5"
+      className="glass flex flex-col gap-2 rounded-[1.5rem] px-5 py-2.5"
     >
       <motion.h2 variants={fadeUp} className="flex items-center gap-2.5 text-xs font-extrabold tracking-[0.14em] text-navy uppercase">
         <span aria-hidden className="bg-grad h-[0.1875rem] w-6 rounded-full" />

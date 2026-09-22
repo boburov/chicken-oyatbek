@@ -50,7 +50,7 @@ export const BENEFIT = {
   chain: [
     { value: "60 ming bosh", caption: "praroditel parrandalar" },
     { value: "3 mln boshgacha", caption: "ota-ona avlodi yetishtiriladi" },
-    { value: "500 ming bosh", caption: "korxonada saqlanadi" },
+    { value: "500 ming bosh", caption: "ota ona avlodi korxonada saqlanadi" },
   ],
   output: { value: 85, unit: "mln dona" },
   chicks: { value: 72, unit: "mln dona" },

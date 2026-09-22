@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { ImpactCard } from "../components/ui/ImpactCard";
+import { OutputTiles } from "../components/ui/OutputTiles";
 import { RevealGroup } from "../components/ui/Reveal";
 import { EXPORT_COUNTRIES } from "../data/content";
 import { IMPACTS } from "../data/results";
@@ -35,7 +36,7 @@ function ExportCard() {
   );
 }
 
-/** "Erishiladigan natijalar": four indicators, each today → after the project, then export flags. */
+/** "Erishiladigan natijalar": the yearly chick output and exports, then the indicators (today → after the project), then export flags. */
 export function PosterResults() {
   return (
     <RevealGroup eager interval={0.08} timing={{ notBefore: START }} aria-labelledby="poster-results">
@@ -48,7 +49,11 @@ export function PosterResults() {
         Erishiladigan natijalar
       </motion.h2>
 
-      <div className="mt-2 grid h-[9rem] grid-cols-[repeat(4,minmax(0,1fr))_minmax(0,0.8fr)] items-stretch gap-2.5">
+      <div
+        className="mt-2 grid h-[7.5rem] items-stretch gap-2.5"
+        style={{ gridTemplateColumns: `minmax(0, 1.5fr) repeat(${IMPACTS.length}, minmax(0, 1fr)) minmax(0, 0.8fr)` }}
+      >
+        <OutputTiles poster startAfter={START + 0.3} />
         {IMPACTS.map((impact) => (
           <ImpactCard key={impact.label} {...impact} poster startAfter={START + 0.3} />
         ))}

@@ -84,7 +84,7 @@ export function JointVenture({ standalone = false }: { standalone?: boolean }) {
             standalone ? "mt-auto pt-7" : "mt-6 pt-5",
           )}
         >
-          <dt className="pb-1 text-xs font-bold tracking-[0.14em] text-navy uppercase">Ota-ona podasi</dt>
+          <dt className="pb-1 text-xs font-bold tracking-[0.14em] text-navy uppercase">OTA-ONA AVLODI</dt>
           <dd className="text-right">
             <AnimatedCounter
               value={PARENT_STOCK.value}
