@@ -1,11 +1,9 @@
-import { motion } from "framer-motion";
 import { EXPORT_COUNTRIES, sectionIndex } from "../data/content";
-import { stagger, VIEWPORT } from "../lib/motion";
-import { CountryCard } from "./ui/CountryCard";
+import { ExportFlow } from "./ui/ExportFlow";
+import { RevealGroup } from "./ui/Reveal";
 import { SectionHeading } from "./ui/SectionHeading";
 
-const list = stagger(0.08);
-
+/** Export destinations: the farm's region → arrow → six countries. */
 export function ExportGeography() {
   return (
     <section id="eksport" aria-labelledby="eksport-title" className="wrap scroll-mt-20 pt-16 lg:pt-24">
@@ -15,18 +13,9 @@ export function ExportGeography() {
         title="Eksport geografiyasi"
         aside={`${EXPORT_COUNTRIES.length} ta davlat`}
       />
-
-      <motion.ul
-        variants={list}
-        initial="hidden"
-        whileInView="show"
-        viewport={VIEWPORT}
-        className="grid grid-cols-2 gap-3 sm:grid-cols-3 sm:gap-4 lg:grid-cols-6"
-      >
-        {EXPORT_COUNTRIES.map((country) => (
-          <CountryCard key={country.name} {...country} />
-        ))}
-      </motion.ul>
+      <RevealGroup interval={0.07} className="glass rounded-[1.75rem] p-4 sm:p-6 lg:p-8">
+        <ExportFlow />
+      </RevealGroup>
     </section>
   );
 }

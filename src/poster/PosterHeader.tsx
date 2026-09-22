@@ -25,16 +25,16 @@ export function PosterHeader() {
       <h1 className="mx-auto max-w-[70rem] uppercase">
         <motion.span
           variants={fadeUp}
-          className="block text-[1.0625rem] leading-normal font-bold tracking-[0.08em] text-navy"
+          className="block text-[1.0625rem] leading-normal font-bold tracking-[0.08em] text-accent"
         >
           “{PARTNER_NAME}” kompaniyasi bilan hamkorlikda
         </motion.span>
 
-        <span className="mt-0.5 block text-[3.375rem] leading-[1.04] font-extrabold tracking-[-0.035em] text-accent">
+        <span className="mt-0.5 block text-[3.375rem] leading-[1.04] font-extrabold tracking-[-0.035em]">
           {HEADLINE.map((text, i) => (
             <Fragment key={text}>
               <span className="inline-block overflow-hidden pb-[0.06em] align-bottom">
-                <motion.span variants={word} className="inline-block">
+                <motion.span variants={word} className="inline-block text-grad">
                   {text}
                 </motion.span>
               </span>

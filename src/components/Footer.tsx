@@ -11,7 +11,7 @@ import { RevealGroup } from "./ui/Reveal";
  */
 export function Footer() {
   return (
-    <footer className="relative isolate overflow-hidden bg-navy text-white">
+    <footer className="relative isolate overflow-hidden bg-[linear-gradient(135deg,#123b8f_0%,#1e4fd6_55%,#5b34d6_100%)] text-white">
       <DotPattern
         columns={11}
         rows={3}
@@ -53,7 +53,7 @@ export function Footer() {
               <motion.span
                 aria-hidden
                 variants={drawX}
-                className="absolute top-0 left-0 h-0.5 w-8 origin-left bg-accent"
+                className="absolute top-0 left-0 h-0.5 w-8 origin-left bg-violet-soft"
               />
               <p className="flex flex-wrap items-baseline gap-x-2 gap-y-1 leading-none font-extrabold">
                 <span className="text-4xl tracking-[-0.04em] tabular-nums sm:text-5xl lg:text-[3.5rem]">

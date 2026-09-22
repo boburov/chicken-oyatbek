@@ -20,12 +20,12 @@ export function InfoCard({ icon: Icon, badge: Badge, overline, label, value, suf
   return (
     <motion.article
       variants={fadeUp}
-      className="group flex flex-1 items-center gap-4 rounded-3xl bg-mist p-5 sm:p-6"
+      className="glass group flex flex-1 items-center gap-4 rounded-3xl p-5 sm:p-6"
     >
-      <div className="relative flex size-16 shrink-0 items-center justify-center rounded-2xl bg-white text-navy shadow-card transition-[translate] duration-500 ease-out-expo group-hover:-translate-y-1">
+      <div className="relative flex size-16 shrink-0 items-center justify-center rounded-2xl bg-grad text-white shadow-glow transition-[translate] duration-500 ease-out-expo group-hover:-translate-y-1">
         <Icon aria-hidden className="size-8" strokeWidth={1.6} />
         {Badge && (
-          <span className="absolute -right-2 -bottom-2 flex size-7 items-center justify-center rounded-full bg-navy text-white ring-[3px] ring-mist">
+          <span className="absolute -right-2 -bottom-2 flex size-7 items-center justify-center rounded-full bg-navy text-white ring-[3px] ring-white">
             <Badge aria-hidden className="size-3.5" strokeWidth={2.2} />
           </span>
         )}
@@ -41,7 +41,7 @@ export function InfoCard({ icon: Icon, badge: Badge, overline, label, value, suf
           {label}
         </h3>
         <p className="mt-2 flex items-baseline justify-center gap-1.5 leading-none font-extrabold text-accent">
-          <AnimatedCounter value={value} className="text-[3.5rem] tracking-[-0.04em] xl:text-[3.75rem]" />
+          <AnimatedCounter value={value} gradient className="text-[3.5rem] tracking-[-0.04em] xl:text-[3.75rem]" />
           {suffix && <span className="text-2xl">{suffix}</span>}
         </p>
         <p className="mt-2.5 text-xs leading-snug font-bold tracking-[0.1em] text-balance text-navy uppercase">

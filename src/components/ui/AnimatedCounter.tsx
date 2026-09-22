@@ -14,6 +14,8 @@ type AnimatedCounterProps = {
    */
   startAfter?: number;
   className?: string;
+  /** Fill the digits with the brand gradient (applied per digit layer, not to the wrapper). */
+  gradient?: boolean;
 };
 
 /**
@@ -28,6 +30,7 @@ export function AnimatedCounter({
   duration = 2,
   startAfter,
   className,
+  gradient = false,
 }: AnimatedCounterProps) {
   const rootRef = useRef<HTMLSpanElement>(null);
   const liveRef = useRef<HTMLSpanElement>(null);
@@ -64,7 +67,7 @@ export function AnimatedCounter({
       <span aria-hidden className="invisible col-start-1 row-start-1">
         {finalText}
       </span>
-      <span aria-hidden ref={liveRef} className="col-start-1 row-start-1">
+      <span aria-hidden ref={liveRef} className={cn("col-start-1 row-start-1", gradient && "text-grad")}>
         {format(0)}
       </span>
     </span>

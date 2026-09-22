@@ -56,14 +56,14 @@ export function Hero() {
             “{PARTNER_NAME}” kompaniyasi bilan hamkorlikda
           </motion.span>
 
-          <span className="mt-3 block text-[clamp(2.5rem,6.2vw,5rem)] leading-[1.02] font-extrabold tracking-[-0.035em] text-accent lg:mt-4">
+          <span className="mt-3 block text-[clamp(2.5rem,6.2vw,5rem)] leading-[1.02] font-extrabold tracking-[-0.035em] lg:mt-4">
             {HEADLINE.map((group, g) => (
               <Fragment key={g}>
                 <span className="whitespace-nowrap">
                   {group.map((text, i) => (
                     <Fragment key={text}>
                       <span className="inline-block overflow-hidden pb-[0.08em] align-bottom">
-                        <motion.span variants={word} className="inline-block">
+                        <motion.span variants={word} className="inline-block text-grad">
                           {text}
                         </motion.span>
                       </span>
@@ -86,7 +86,7 @@ export function Hero() {
 
         <motion.p
           variants={fadeUp}
-          className="mt-7 inline-flex items-center gap-3 rounded-3xl border border-line bg-white px-5 py-2.5 text-left text-xs leading-relaxed font-bold tracking-[0.12em] text-navy uppercase shadow-[0_8px_24px_-12px_rgb(18_52_91/0.25)] sm:rounded-full sm:py-2 sm:text-[0.8125rem]"
+          className="glass mt-7 inline-flex items-center gap-3 rounded-3xl px-5 py-2.5 text-left text-xs leading-relaxed font-bold tracking-[0.12em] text-navy uppercase shadow-[0_8px_24px_-12px_rgb(18_52_91/0.25)] sm:rounded-full sm:py-2 sm:text-[0.8125rem]"
         >
           <MapPin aria-hidden className="size-4 shrink-0 text-accent" strokeWidth={2.2} />
           <span>

@@ -43,7 +43,7 @@ export function SectionHeading({ id, index, title, aside }: SectionHeadingProps)
         <motion.span variants={drawX} className="absolute inset-0 origin-left bg-navy/15" />
         <motion.span
           variants={drawX}
-          className="absolute -top-px left-0 h-[3px] w-14 origin-left rounded-full bg-accent"
+          className="bg-grad absolute -top-px left-0 h-[3px] w-14 origin-left rounded-full"
         />
       </div>
     </RevealGroup>

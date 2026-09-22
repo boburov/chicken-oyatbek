@@ -37,7 +37,7 @@ export const sectionIndex = (id: SectionId) =>
   String(SECTIONS.findIndex((section) => section.id === id) + 1).padStart(2, "0");
 
 export const PROJECT_VALUE = { value: 30, unit: "mln doll." } as const;
-export const POULTRY_HOUSES = { value: 54, suffix: "ta", unit: "zamonaviy parrandaxona quriladi" } as const;
+export const POULTRY_HOUSES = { value: 45, suffix: "ta", unit: "zamonaviy parrandaxona quriladi" } as const;
 
 export const JOINT_VENTURE = {
   uzbekistan: { share: 60, label: "O‘zbekiston tomoni" },
@@ -53,6 +53,10 @@ export const BENEFIT = {
     { value: "500 ming bosh", caption: "korxonada saqlanadi" },
   ],
   output: { value: 85, unit: "mln dona" },
+  chicks: { value: 72, unit: "mln dona" },
+  export: { value: 43, unit: "mln doll." },
+  /** The parent generation is sold on: our price per bird against importing the same birds from Europe. */
+  sale: { headsMln: 3, pricePerHead: 7, europePricePerHead: 12, unit: "mln doll." },
 } as const;
 
 export const EXPORT_COUNTRIES = [
@@ -77,9 +81,9 @@ export const SUMMARY = [
   { value: "30", unit: "mln doll.", label: "Loyiha qiymati" },
   { value: "54", unit: "ta", label: "Zamonaviy parrandaxona quriladi" },
   { value: "60 / 40", unit: "foiz", label: "O‘zbekiston va Xitoy ulushi" },
-  { value: "85", unit: "mln dona", label: "Yillik inkubatsion tuxum" },
-  { value: "72", unit: "mln dona / yil", label: "Jo‘ja ishlab chiqarish quvvati" },
-  { value: "43", unit: "mln doll. / yil", label: "Bir kunlik jo‘ja eksporti" },
+  { value: "85", unit: "mln dona", label: "Yillik broyler inkubatsion tuxum" },
+  { value: "72", unit: "mln dona / yil", label: "Broyler jo‘ja ishlab chiqarish quvvati" },
+  { value: "43", unit: "mln doll. / yil", label: "Bir kunlik broyler jo‘ja eksporti" },
   { value: "36", unit: "mln doll. / yil", label: "Yillik valyuta tejamkorligi" },
   { value: "300", unit: "nafar", label: "Yangi ish o‘rinlari" },
 ] as const;

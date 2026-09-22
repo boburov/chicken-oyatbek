@@ -1,23 +1,18 @@
 import { sectionIndex } from "../data/content";
-import { CURRENT_RESULT, EXPECTED_RESULTS } from "../data/results";
-import { KpiCard } from "./ui/KpiCard";
+import { IMPACTS } from "../data/results";
+import { ImpactCard } from "./ui/ImpactCard";
 import { RevealGroup } from "./ui/Reveal";
 import { SectionHeading } from "./ui/SectionHeading";
 
-/** Today's output first (dark card), then the five projected results. */
+/** Four indicators, each today (“Hozir”) → after the project (“Loyihadan keyin”). */
 export function Results() {
   return (
     <section id="natijalar" aria-labelledby="natijalar-title" className="wrap scroll-mt-20 pt-16 lg:pt-24">
-      <SectionHeading
-        id="natijalar-title"
-        index={sectionIndex("natijalar")}
-        title="Erishiladigan natijalar"
-      />
+      <SectionHeading id="natijalar-title" index={sectionIndex("natijalar")} title="Erishiladigan natijalar" />
 
-      <RevealGroup interval={0.1} className="grid gap-3 sm:grid-cols-2 sm:gap-4 lg:grid-cols-3">
-        <KpiCard {...CURRENT_RESULT} tone="dark" />
-        {EXPECTED_RESULTS.map((result) => (
-          <KpiCard key={result.label} {...result} />
+      <RevealGroup interval={0.1} className="grid gap-3 sm:gap-4 lg:grid-cols-2">
+        {IMPACTS.map((impact) => (
+          <ImpactCard key={impact.label} {...impact} />
         ))}
       </RevealGroup>
     </section>

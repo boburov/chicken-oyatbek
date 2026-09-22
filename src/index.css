@@ -3,16 +3,21 @@
 @theme {
   --font-sans: "Manrope Variable", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
 
-  --color-navy: #12345b;
-  --color-navy-deep: #0b2340;
-  --color-accent: #d92828;
-  --color-ink: #18212b;
-  --color-mist: #f4f6f8;
-  --color-line: #e1e7ee;
-  --color-muted: #55657a;
+  /* Shared brand palette with the Shuxrat ōgli presentation: white, blue, soft purple. */
+  --color-navy: #123b8f;
+  --color-navy-deep: #0c2a6b;
+  --color-accent: #176bff;
+  --color-violet: #7b3ff2;
+  --color-violet-soft: #bda7ff;
+  --color-ink: #101828;
+  --color-mist: #eef3ff;
+  --color-line: #e3e9f5;
+  --color-muted: #667085;
+  --color-canvas: #f8faff;
 
-  --shadow-card: 0 1px 2px rgb(18 52 91 / 0.05), 0 18px 44px -18px rgb(18 52 91 / 0.18);
-  --shadow-float: 0 2px 4px rgb(18 52 91 / 0.06), 0 28px 56px -24px rgb(18 52 91 / 0.32);
+  --shadow-card: inset 0 1px 0 rgb(255 255 255 / 0.9), 0 10px 30px -12px rgb(18 59 143 / 0.22), 0 2px 6px -2px rgb(18 59 143 / 0.08);
+  --shadow-float: 0 2px 4px rgb(18 59 143 / 0.06), 0 28px 56px -24px rgb(18 59 143 / 0.4);
+  --shadow-glow: 0 0 0 1px rgb(23 107 255 / 0.18), 0 12px 32px -10px rgb(23 107 255 / 0.45);
 
   --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
 
@@ -50,8 +55,15 @@
   }
 
   body {
-    @apply bg-white font-sans text-ink antialiased;
+    @apply font-sans text-ink antialiased;
     text-rendering: optimizeLegibility;
+    /* soft blue / purple light behind the glass surfaces */
+    background:
+      radial-gradient(52vw 52vw at 88% -12%, rgb(23 107 255 / 0.13), transparent 70%),
+      radial-gradient(42vw 42vw at 62% 118%, rgb(123 63 242 / 0.1), transparent 70%),
+      radial-gradient(36vw 36vw at -8% 40%, rgb(189 167 255 / 0.14), transparent 70%),
+      var(--color-canvas);
+    background-attachment: fixed;
   }
 
   ::selection {
@@ -121,7 +133,7 @@ html[data-mode="poster"] #root {
 @utility dot-pattern {
   --dot-gap: 1rem;
   --dot-radius: 0.15625rem;
-  --dot-color: var(--color-navy);
+  --dot-color: rgb(23 107 255 / 0.45);
   background-image: radial-gradient(
     circle at center,
     var(--dot-color) var(--dot-radius),
@@ -147,4 +159,26 @@ html[data-mode="poster"] #root {
   &:focus-within::after {
     clip-path: inset(0 0 0 0);
   }
+}
+
+/* Frosted glass surface used by every card. */
+@utility glass {
+  background: rgb(255 255 255 / 0.66);
+  border: 1px solid rgb(255 255 255 / 0.95);
+  box-shadow: var(--shadow-card);
+  backdrop-filter: blur(16px) saturate(1.4);
+  -webkit-backdrop-filter: blur(16px) saturate(1.4);
+}
+
+/* Blue → purple gradient text for headline figures. */
+@utility text-grad {
+  background: linear-gradient(95deg, var(--color-navy) 0%, var(--color-accent) 55%, var(--color-violet) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Blue → purple fill. */
+@utility bg-grad {
+  background: linear-gradient(135deg, var(--color-accent), var(--color-violet));
 }
