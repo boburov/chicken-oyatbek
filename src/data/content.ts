@@ -44,6 +44,13 @@ export const JOINT_VENTURE = {
   china: { share: 40, label: "Xitoy tomoni" },
 } as const;
 
+/** Where the 30 mln dollars come from; the parts add up to PROJECT_VALUE. */
+export const FUNDING = [
+  { label: "Xorijiy investitsiya", value: 12 },
+  { label: "Tadbirkor mablag‘i", value: 3 },
+  { label: "Bank krediti", value: 15 },
+] as const;
+
 export const PARENT_STOCK = { value: 500, unit: "ming bosh / yil" } as const;
 
 export const BENEFIT = {

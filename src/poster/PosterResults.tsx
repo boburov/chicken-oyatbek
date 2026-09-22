@@ -3,7 +3,7 @@ import { ImpactCard } from "../components/ui/ImpactCard";
 import { OutputTiles } from "../components/ui/OutputTiles";
 import { RevealGroup } from "../components/ui/Reveal";
 import { EXPORT_COUNTRIES } from "../data/content";
-import { IMPACTS } from "../data/results";
+import { IMPACTS, type Impact } from "../data/results";
 import { fadeUp } from "../lib/motion";
 
 const START = 2.1;
@@ -36,8 +36,14 @@ function ExportCard() {
   );
 }
 
-/** "Erishiladigan natijalar": the yearly chick output and exports, then the indicators (today → after the project), then export flags. */
+/** "Erishiladigan natijalar": the yearly chick output and exports, the indicators (today → after the project), with export flags before the last one. */
 export function PosterResults() {
+  // Export destinations go directly before the "Aylanma" card (or last, if it is missing).
+  const turnover = IMPACTS.findIndex((impact) => impact.label === "Aylanma");
+  const at = turnover === -1 ? IMPACTS.length : turnover;
+  const cells: (Impact | "export")[] = [...IMPACTS.slice(0, at), "export", ...IMPACTS.slice(at)];
+  const columns = ["minmax(0, 1.5fr)", ...cells.map((cell) => (cell === "export" ? "minmax(0, 0.8fr)" : "minmax(0, 1fr)"))].join(" ");
+
   return (
     <RevealGroup eager interval={0.08} timing={{ notBefore: START }} aria-labelledby="poster-results">
       <motion.h2
@@ -49,15 +55,15 @@ export function PosterResults() {
         Erishiladigan natijalar
       </motion.h2>
 
-      <div
-        className="mt-2 grid h-[7.5rem] items-stretch gap-2.5"
-        style={{ gridTemplateColumns: `minmax(0, 1.5fr) repeat(${IMPACTS.length}, minmax(0, 1fr)) minmax(0, 0.8fr)` }}
-      >
+      <div className="mt-2 grid h-[7.5rem] items-stretch gap-2.5" style={{ gridTemplateColumns: columns }}>
         <OutputTiles poster startAfter={START + 0.3} />
-        {IMPACTS.map((impact) => (
-          <ImpactCard key={impact.label} {...impact} poster startAfter={START + 0.3} />
-        ))}
-        <ExportCard />
+        {cells.map((cell) =>
+          cell === "export" ? (
+            <ExportCard key="export" />
+          ) : (
+            <ImpactCard key={cell.label} {...cell} poster startAfter={START + 0.3} />
+          ),
+        )}
       </div>
     </RevealGroup>
   );

@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { Bird, ChartNoAxesCombined, DollarSign, MapPinned, Warehouse, type LucideIcon } from "lucide-react";
 import { AnimatedCounter } from "../components/ui/AnimatedCounter";
+import { FundingChart } from "../components/ui/FundingChart";
 import { ImageCard } from "../components/ui/ImageCard";
 import { Reveal, RevealGroup } from "../components/ui/Reveal";
 import {
@@ -14,7 +15,7 @@ import { GALLERY } from "../data/gallery";
 import { fadeUp } from "../lib/motion";
 
 /** Seconds after load at which each column starts, so the panel fills left to right after the title. */
-const START = { panel: 0.7, stats: 0.95, gallery: 1.2 } as const;
+const START = { panel: 0.7, stats: 0.95, funding: 1.1, gallery: 1.3 } as const;
 
 type StatProps = {
   icon: LucideIcon;
@@ -58,7 +59,7 @@ function Stat({ icon: Icon, badge: Badge, overline, label, value, suffix, unit }
   );
 }
 
-/** The project panel: key figures · photographs. */
+/** The project panel: key figures · funding sources · photographs. */
 export function PosterOverview() {
   return (
     <Reveal
@@ -68,7 +69,7 @@ export function PosterOverview() {
     >
       <section
         aria-label="Loyiha haqida asosiy ma’lumotlar"
-        className="grid h-full min-h-0 grid-cols-[minmax(0,1fr)_minmax(0,2.2fr)]"
+        className="grid h-full min-h-0 grid-cols-[minmax(0,1.1fr)_minmax(0,0.95fr)_minmax(0,1.75fr)]"
       >
         <RevealGroup
           eager
@@ -101,6 +102,10 @@ export function PosterOverview() {
           />
         </RevealGroup>
 
+        <RevealGroup eager timing={{ notBefore: START.funding }} className="min-h-0 border-r border-navy/10 px-5">
+          <FundingChart startAfter={START.funding + 0.2} />
+        </RevealGroup>
+
         <RevealGroup
           eager
           interval={0.12}
@@ -112,7 +117,7 @@ export function PosterOverview() {
               key={image.label}
               {...image}
               index={index}
-              sizes="(min-width: 1200px) 32vw, 46vw"
+              sizes="(min-width: 1200px) 26vw, 46vw"
               priority
               className="min-h-0 rounded-[1.75rem_0.5rem] ring-1 ring-white"
             />
