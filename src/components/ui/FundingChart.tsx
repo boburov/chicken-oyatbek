@@ -64,7 +64,19 @@ export function FundingChart({ startAfter = 0 }: { startAfter?: number }) {
           <li key={source.label} className="flex flex-col gap-1.5">
             <div className="flex items-baseline justify-between gap-2">
               <span className="flex min-w-0 items-center gap-2 text-[0.8125rem] font-bold text-navy">
-                <span aria-hidden className="size-2.5 shrink-0 rounded-[3px]" style={{ backgroundColor: COLORS[i] }} />
+                {/* A source with a logo shows it in place of the colour swatch. */}
+                {source.logo ? (
+                  <img
+                    src={source.logo.src}
+                    alt={source.logo.alt}
+                    width={20}
+                    height={20}
+                    decoding="async"
+                    className="size-5 shrink-0 rounded-md bg-white p-0.5 shadow-sm ring-1 ring-navy/10"
+                  />
+                ) : (
+                  <span aria-hidden className="size-2.5 shrink-0 rounded-[3px]" style={{ backgroundColor: COLORS[i] }} />
+                )}
                 {source.label}
               </span>
               <span className="shrink-0 whitespace-nowrap">

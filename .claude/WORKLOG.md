@@ -629,3 +629,76 @@ The bars still fill to the same lengths, so the size difference between the thre
 <sub>session `1bc12b8b` · branch `redesign-blue-glass` · 2 ta qadam</sub>
 
 ---
+
+## 2026-09-22 13:48 — git remote add origin https://github.com/boburov/chicken-oyatbek.git g
+
+**So'rov**
+
+> git remote add origin https://github.com/boburov/chicken-oyatbek.git
+> git branch -M main
+> git push -u origin main 
+>
+> push to this repo
+
+**Buyruqlar (2)**
+
+```sh
+git remote -v && git remote add origin https://github.com/boburov/chicken-oyatbek.git 2>&1; git branch -M main && git push -u origin main 2>&1
+git remote add oyatbek https://github.com/boburov/chicken-oyatbek.git && git push -u oyatbek main 2>&1
+```
+
+**Natija**
+
+The existing `origin` points to a different repo (`abdukarimov0990/Chicken1`, where you don't have push access). I'll leave it alone and add the new repo under a separate remote name.
+
+<sub>session `65529a7e` · branch `main` · 2 ta qadam</sub>
+
+---
+
+## 2026-09-22 14:00 — https://mkbank.uz/uz took faviocon from this website and put it Bank k
+
+**So'rov**
+
+> https://mkbank.uz/uz
+>
+> took faviocon from this website and put it Bank krediti section litle icon
+
+**Buyruqlar (3)**
+
+```sh
+cd /private/tmp/claude-501/-Users-shukrullo-Desktop-Chicken1/1bc12b8b-0d8f-4d3d-af14-d32169e307df/scratchpad && curl -sL --max-time 20 https://mkbank.uz/uz -o m…
+cd /private/tmp/claude-501/-Users-shukrullo-Desktop-Chicken1/1bc12b8b-0d8f-4d3d-af14-d32169e307df/scratchpad && curl -sL --max-time 20 https://mkbank.uz/favicon…
+cd /Users/shukrullo/Desktop/Chicken1; mkdir -p src/assets/logos && cp /private/tmp/claude-501/-Users-shukrullo-Desktop-Chicken1/1bc12b8b-0d8f-4d3d-af14-d32169e3…
+```
+
+**Natija**
+
+Fetching the favicon from mkbank.uz:
+
+The favicon is a small, clean SVG (the MK Bank logo in blue and green). Adding it to the project and to the Bank krediti row:
+
+<sub>session `1bc12b8b` · branch `main` · 4 ta qadam</sub>
+
+---
+
+## 2026-09-22 14:06 — npoe put logo in purple squrare replace it with logo
+
+**So'rov**
+
+> npoe put logo in purple squrare replace it with logo
+
+**Buyruqlar (1)**
+
+```sh
+cd /Users/shukrullo/Desktop/Chicken1; python3 - <<'EOF' p='src/components/ui/FundingChart.tsx' s=open(p).read() a=''' <span aria-hidden className="size-2.5 shri…
+```
+
+**Natija**
+
+The MK Bank logo now replaces the purple square in front of "Bank krediti", and the second copy after the label is gone. The purple bar underneath still links the row to the purple part of the top bar. I checked it in the browser at 1710×960.
+
+Any funding source that gets a logo in [content.ts](src/data/content.ts) will show it in place of its colour square. The change is in [FundingChart.tsx](src/components/ui/FundingChart.tsx).
+
+<sub>session `1bc12b8b` · branch `main` · 2 ta qadam</sub>
+
+---

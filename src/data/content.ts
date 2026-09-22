@@ -4,6 +4,7 @@ import kg from "../assets/flags/kg.svg";
 import kz from "../assets/flags/kz.svg";
 import ru from "../assets/flags/ru.svg";
 import tj from "../assets/flags/tj.svg";
+import mkbank from "../assets/logos/mkbank.svg";
 
 /**
  * Every figure and label shown on the page lives here,
@@ -45,11 +46,11 @@ export const JOINT_VENTURE = {
 } as const;
 
 /** Where the 30 mln dollars come from; the parts add up to PROJECT_VALUE. */
-export const FUNDING = [
+export const FUNDING: { label: string; value: number; logo?: { src: string; alt: string } }[] = [
   { label: "Xorijiy investitsiya", value: 12 },
   { label: "Tadbirkor mablag‘i", value: 3 },
-  { label: "Bank krediti", value: 15 },
-] as const;
+  { label: "Bank krediti", value: 15, logo: { src: mkbank, alt: "Mikrokreditbank logotipi" } },
+];
 
 export const PARENT_STOCK = { value: 500, unit: "ming bosh / yil" } as const;
 
